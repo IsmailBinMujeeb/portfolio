@@ -7,6 +7,7 @@
     <title>Services - Ismail Bin Mujeeb</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <style>
         .services-container {
             padding: 20px;
@@ -102,7 +103,7 @@
     <% if (isAdmin) { %>
         <a href="/service/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
         <% } %>
-
+            <%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

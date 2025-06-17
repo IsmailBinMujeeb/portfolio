@@ -9,6 +9,7 @@
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <style>
         .services-wrapper .service-title-wrapper {
             margin: 10px 0px;
@@ -96,7 +97,7 @@
     <% if (isAdmin) { %>
         <a href="/service/update/<%= service._id %>" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
         <% } %>
-
+            <%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

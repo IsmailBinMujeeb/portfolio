@@ -7,6 +7,7 @@
     <title>Skills - Ismail Bin Mujeeb</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <style>
         .skills-wrapper {
             column-count: 4;
@@ -100,7 +101,7 @@
     <% if (isAdmin) { %>
         <a href="/skill/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
         <% } %>
-
+            <%- include('../partials/footer.ejs') %>
 </body>
 <script src="/js/navbar.js"></script>
 
