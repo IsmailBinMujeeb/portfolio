@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= service.service_name %> - Ismail Bin Mujeeb
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .services-wrapper .service-title-wrapper {
+            margin: 10px 0px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .services-wrapper .service-title-wrapper img {
+            width: 100px;
+            border-radius: 10px;
+        }
+
+        .services-wrapper h1 a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .service-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: .8em;
+            color: gray;
+        }
+
+        .service-content-wrapper {
+            padding: 20px;
+        }
+
+        .details-wrapper.container {
+            padding: 20px;
+            width: fit-content;
+            float: right;
+            margin: 10px 0;
+        }
+
+        .details-wrapper.container i {
+            color: #E0234E;
+        }
+
+        @media (max-width: 1024px) {
+            .services-wrapper {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-wrapper {
+                column-count: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="services-wrapper">
+            <div class="service-title-wrapper container">
+                <h1>
+                    <%= service.service_name %>
+                </h1>
+                <div class="service-date">
+                    <img src="<%= service.service_image %>" alt="service image">
+                </div>
+            </div>
+
+            <div class="service-content-wrapper container">
+                <%- service.service_description %>
+            </div>
+
+            <div class="details-wrapper container">
+                <p>at just $<%= service.service_price %> <a href="<%= service.service_link %>"><i
+                                class="fa-solid fa-up-right-from-square"></i></a></p>
+            </div>
+
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/service/update/<%= service._id %>" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
+        <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .projects-container {
+            column-count: 4;
+            column-gap: 40px;
+            padding: 20px;
+        }
+
+        .project {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            break-inside: avoid;
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .project h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .project h2 a {
+            text-decoration: none;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .project p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: whitesmoke;
+            margin: 10px 0;
+        }
+
+        .stack span {
+            display: inline-block;
+            background: #ffffff2d;
+            color: #fff;
+            padding: 2px 6px;
+            margin: 2px;
+            font-size: 0.8rem;
+            border-radius: 5px;
+        }
+
+        .stack span::before {
+            content: " • ";
+        }
+
+        .links a {
+            display: inline-block;
+            color: #E0234E;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+
+        .links a::before {
+            content: " ⤷ ";
+        }
+
+        @media (max-width: 1024px) {
+            .projects-wrapper {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-wrapper {
+                column-count: 1;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="projects-container">
+            <% projects?.forEach(project=> { %>
+                <div class="project container">
+                    <img src="<%= project.project_image %>" alt="project image">
+                    <h2>
+                        <% if (isAdmin) { %>
+                            <a href="/project/update/<%= project._id %>">
+                                ✎
+                            </a>
+                            <% } %>
+                                <%= project.project_name %>
+                    </h2>
+                    <p>
+                        <%= project.project_description %>
+                    </p>
+                    <div class="stack">
+                        <% project?.project_stack.forEach(skill=> { %>
+                            <span>
+                                <%= skill.skill_name %>
+                            </span>
+                            <% }) %>
+                    </div>
+                    <div class="links">
+                        <% project?.project_links?.forEach(link=> { %>
+                            <a href="<%= link.link %>">
+                                <%= link.link_name %>
+                            </a>
+                            <% }) %>
+
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/project/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
+        <% } %>
+
+</body>
+<script src="/js/navbar.js"></script>
+
+</html>

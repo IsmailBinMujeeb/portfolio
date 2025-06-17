@@ -1,0 +1,80 @@
+/* Existing styles remain the same */
+header {
+    padding: 10px 0;
+    width: 80%;
+    position: relative;
+    margin: 0 auto 20px;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.153);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    width: 80%;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin-left: auto;
+    width: fit-content;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    transition: all .2s;
+}
+
+li a:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 8px 8px 10px rgba(0, 0, 0, 0.253), inset -8px -8px 10px rgba(255, 255, 255, 0.113);
+}
+
+/* Hamburger icon */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+
+@media (max-width: 768px) {
+
+    nav {
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    ul {
+        width: auto;
+        margin: none;
+        padding: 0px;
+    }
+
+    li a {
+        margin: 0;
+        padding: 5px 8px;
+    }
+}

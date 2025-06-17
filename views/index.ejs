@@ -4,11 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    Hello World
+    <header>
+        <%- include('partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="personal-information-wrapper">
+            <div class="information">
+                <%= profile.hero_section_description %><br> <span>⤷</span> Syed Ismail
+                    <div class="social-media-links">
+                        <a href="https://github.com/ismailBinMujeeb" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ismailbinmujeeb/" target="_blank"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://x.com/IsmailBinMujeeb" target="_blank"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.fiverr.com/s/XLw7By0" target="_blank">Fi</a>
+                        <a href="https://hashnode.com/@IsmailBinMujeeb" target="_blank"><i
+                                class="fa-brands fa-hashnode"></i></a>
+                    </div>
+            </div>
+            <div class="profile-card-wrapper container">
+                <%- include('partials/profile.card.ejs', { profile: profile.hero_section_image }) %>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1 class="wrapper-title">SKILLS</h1>
+        <div class="skills-wrapper">
+            <div class="skills">
+                <% skills.forEach(skill=> { %>
+                    <div class="skill">
+                        <%= skill.skill_name %>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1 class="wrapper-title">PROJECTS</h1>
+        <div class="projects-wrapper">
+            <div class="projects">
+                <% projects.forEach(project=> { %>
+                    <div class="project container">
+                        <img src="<%= project.project_image %>" alt="<%= project.project_name %>">
+                        <h2>
+                            <%= project.project_name %>
+                        </h2>
+                        <p>
+                            <%= project.project_description %>
+                        </p>
+                        <div class="stack">
+                            <% project.project_stack.forEach(element=> { %>
+                                <span>
+                                    <%= element.skill_name %>
+                                </span>
+                                <% }) %>
+                        </div>
+                        <div class="links">
+                            <% project.project_links.forEach(link=> { %>
+                                <a href="<%= link.link %>" target="_blank">
+                                    <%= link.link_name %>
+                                </a>
+                                <% }) %>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1 class="wrapper-title">BLOGS</h1>
+        <div class="blogs-wrapper">
+            <div class="blogs">
+                <% blogs.forEach(blog=> { %>
+                    <div class="blog container">
+                        <a href="/blog/b/<%= blog._id %>">
+                            <h2>
+                                <%= blog.blog_title %>
+                            </h2>
+                        </a>
+                        <p>
+                            <%= blog.blog_short_description %>
+                        </p>
+                        <p class="last_update">
+                            Last Update <%= blog.last_update %>
+                        </p>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h1 class="wrapper-title">SERVICES</h1>
+        <div class="services-wrapper">
+            <div class="services">
+                <% services.forEach(service=> { %>
+                    <div class="service container">
+                        <a href="/service/s/<%= service._id %>" target="_blank">
+                            <img src="<%= service.service_image %>" alt="<%= service.service_name %>">
+                            <h2>
+                                <%= service.service_short_name %>
+                            </h2>
+                            <p>
+                                <%= service.service_short_description %>
+                            </p>
+                            <i>At just $<%= service.service_price %></i>
+                        </a>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/dashboard" class="admin-link"><i class="fa-solid fa-user-tie"></i></a>
+        <% } %>
+
 </body>
 
 </html>

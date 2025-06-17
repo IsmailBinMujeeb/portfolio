@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= blog.title %> - Ismail Bin Mujeeb
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .blogs-wrapper .blog-title-wrapper {
+            margin: 10px 0px;
+            padding: 20px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .blogs-wrapper .blog-title-wrapper h1 {
+            font-size: 3em;
+        }
+
+        .blogs-wrapper h1 a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .blog-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: .8em;
+            color: gray;
+        }
+
+        .blog-content-wrapper {
+            padding: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .blogs-wrapper {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .blogs-wrapper {
+                column-count: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="blogs-wrapper">
+            <div class="blog-title-wrapper container">
+                <h1>
+                    <%= blog.title %>
+                </h1>
+                <div class="blog-date">
+                    Last Update <%= blog.last_update %>
+                </div>
+            </div>
+
+            <div class="blog-content-wrapper container">
+                <%- blog.content %>
+            </div>
+
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/blog/update/<%= blog._id %>" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
+        <% } %>
+
+</body>
+
+</html>

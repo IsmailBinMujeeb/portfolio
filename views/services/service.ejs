@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .services-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .service {
+            width: 30%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .service img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .service h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .service h2 a {
+            text-decoration: none;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .service p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: whitesmoke;
+            margin: 10px 0;
+        }
+
+        .link a {
+            display: inline-block;
+            color: #E0234E;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+
+        .link a::before {
+            content: " ⤷ ";
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="services-container">
+            <% services?.forEach(service=> { %>
+                <div class="service container">
+                    <img src="<%= service.service_image %>" alt="service image">
+                    <h2>
+                        <% if (isAdmin) { %>
+                            <a href="/service/update/<%= service._id %>">
+                                ✎
+                            </a>
+                            <% } %>
+                                <a href="/service/s/<%= service._id %>">
+                                    <%= service.service_name %>
+                                </a>
+                    </h2>
+                    <i>at just $<%= service.service_price %></i>
+
+                    <p>
+                        <%= service.service_short_description %>
+                    </p>
+                    <div class="link">
+                        <a href="<%= service.service_link %>">
+                            <%= service.service_provider %>
+                        </a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/service/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
+        <% } %>
+
+</body>
+
+</html>

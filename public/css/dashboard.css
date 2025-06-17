@@ -1,0 +1,155 @@
+.dashboard-wrapper {
+    padding: 10px 0;
+}
+
+.dashboard-wrapper #submitBtn {
+    background-color: transparent;
+    border: 1px solid #E0234E;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 8px 10px;
+    color: #E0234E;
+}
+
+.dashboard-wrapper #submitBtn:hover {
+    background-color: #E0234E;
+    color: white;
+}
+
+.profile-edit-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.image-edit-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    width: 300px;
+    align-self: stretch;
+}
+
+.image-edit-wrapper img {
+    width: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.content-wrapper {
+    flex: 1;
+    align-self: stretch;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper .links {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #E0234E;
+}
+
+.content-wrapper .links a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.content-wrapper .links a:hover {
+    color: #E0234E;
+}
+
+.content-wrapper .links a.active {
+    background-color: #E0234E;
+}
+
+.content-wrapper .links a.active:hover {
+    color: white;
+}
+
+.content-wrapper .content {
+    overflow-y: scroll;
+    align-self: stretch;
+}
+
+.content-wrapper .content::-webkit-scrollbar {
+    width: 2px;
+}
+
+.content-wrapper .content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.content-wrapper .content::-webkit-scrollbar-thumb {
+    background: #E0234E;
+    border-radius: 10px;
+}
+
+.content-wrapper .content .skill {
+    padding: 10px;
+}
+
+.content-wrapper .content .skill h2 {
+    width: fit-content;
+}
+
+.content-wrapper .content .skill h2 span {
+    font-size: .5em;
+    font-weight: 400;
+    color: rgb(148, 148, 148);
+}
+
+.content-wrapper .content .skill p {
+    padding: 10px;
+}
+
+.content-wrapper .content .project {
+    padding: 10px;
+}
+
+.content-wrapper .content .project h2 {
+    width: fit-content;
+}
+
+.content-wrapper .content .project p {
+    padding: 10px;
+}
+
+.content-wrapper .content .blog {
+    padding: 10px;
+}
+
+.content-wrapper .content .blog h2 {
+    width: fit-content;
+    padding: 10px;
+}
+
+.content-wrapper .content .contribution {
+    padding: 10px;
+}
+
+.content-wrapper .content .contribution h2 {
+    width: fit-content;
+    padding: 10px;
+}
+
+.about-wrapper {
+    padding: 20px;
+    width: 100%;
+    margin: 20px 0px;
+}

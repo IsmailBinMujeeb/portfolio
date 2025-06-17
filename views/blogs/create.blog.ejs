@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/blog/create" method="POST" enctype="multipart/form-data">
+
+                <input type="text" id="blog_title" name="blog_title" placeholder="Blog Title" minlength="4" required />
+
+                <input type="text" id="blog_description" name="blog_description" placeholder="Blog Description"
+                    minlength="4" required />
+
+                <input type="file" id="blog_content" name="blog_content" placeholder="Blog Markdown File"
+                    accept=".md,text/markdown" />
+
+                <input type="checkbox" name="is_featured" id="is_featured"><label for="is_featured"> is
+                    Featured</label>
+
+                <button type="submit">Create Blog</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+.error-wrapper {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    gap: 20px;
+}
+
+.error-wrapper h1 {
+    font-size: 5em;
+    color: #E0234E;
+}
+
+.error-wrapper h2 {
+    font-size: 2em;
+    color: #E0234E;
+}
+
+.error-wrapper a {
+
+    color: #E0234E;
+    text-decoration: none;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update contribution - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/contribution/update/<%= contribution._id %>" method="POST">
+
+                <input type="text" id="contribution_name" name="contribution_name" placeholder="contribution Name"
+                    minlength="4" value="<%= contribution.contribution_name %>" required />
+
+                <input type="text" id="contribution_description" name="contribution_description"
+                    placeholder="Describe what the contribution about..."
+                    value="<%=contribution.contribution_description %>" required>
+
+                <input type="url" id="contribution_link" name="contribution_link" placeholder="Contribution Link"
+                    value="<%= contribution.contribution_link %>" required>
+
+                <button type="submit">Update Contribution</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Service - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/service/create" method="POST" enctype="multipart/form-data">
+
+                <input type="text" id="service_name" name="service_name" placeholder="Service Name" minlength="4"
+                    required />
+
+                <input type="number" name="service_price" placeholder="Service Price" required />
+
+                <input type="text" name="service_provider" placeholder="Service Provider" required />
+
+                <input type="text" id="service_description" name="service_description"
+                    placeholder="Describe what the service does..." required>
+
+                <input type="url" name="service_link" placeholder="Service Link" required />
+
+                <input type="file" id="service_image" name="service_image" placeholder="Service Image"
+                    accept="image/*" />
+
+                <button type="submit">Create service</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

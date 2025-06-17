@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributions - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .contributions-container {
+            column-count: 4;
+            column-gap: 40px;
+            padding: 20px;
+        }
+
+        .contribution {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            break-inside: avoid;
+        }
+
+        .contribution img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .contribution h2 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .contribution h2 a {
+            text-decoration: none;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .contribution p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: whitesmoke;
+            margin: 10px 0;
+        }
+
+        .link a {
+            display: inline-block;
+            color: #E0234E;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+
+        .link a::before {
+            content: " ⤷ ";
+        }
+
+        @media (max-width: 1024px) {
+            .contributions-wrapper {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contributions-wrapper {
+                column-count: 1;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="contributions-container">
+            <% contributions?.forEach(contribution=> { %>
+                <div class="contribution container">
+                    <h2>
+                        <% if (isAdmin) { %>
+                            <a href="/contribution/update/<%= contribution._id %>">
+                                ✎
+                            </a>
+                            <% } %>
+                                <%= contribution.contribution_name %>
+                    </h2>
+                    <p>
+                        <%= contribution.contribution_description %>
+                    </p>
+                    <div class="link">
+                        <a href="<%= contribution.contribution_link %>">
+                            Link
+                        </a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/contribution/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
+        <% } %>
+
+</body>
+<script src="/js/navbar.js"></script>
+
+</html>

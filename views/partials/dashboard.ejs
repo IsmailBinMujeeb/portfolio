@@ -1,0 +1,99 @@
+<div class="dashboard-wrapper">
+    <div class="profile-edit-wrapper">
+        <div class="image-edit-wrapper container">
+            <img src="<%= profile.hero_section_image %>" alt="Profile image">
+            <input type="file" id="hero_section_image" accept="image/*">
+        </div>
+        <div class="content-wrapper container">
+            <div class="links">
+                <a href="/dashboard?tab=skills"
+                    class="<%= ['projects', 'blogs', 'contributions', 'services'].includes(tab) ? '' : 'active' %>">
+                    <i class="fa-brands fa-square-js"></i>
+                </a>
+                <a href="/dashboard?tab=projects" class="<%= tab === 'projects' ? 'active' : '' %>">
+                    <i class="fa-solid fa-list-check"></i>
+                </a>
+                <a href="/dashboard?tab=services" class="<%= tab === 'services' ? 'active' : '' %>">
+                    <i class="fa-brands fa-square-upwork"></i>
+                </a>
+                <a href="/dashboard?tab=blogs" class="<%= tab === 'blogs' ? 'active' : '' %>">
+                    <i class="fa-solid fa-blog"></i>
+                </a>
+                <a href="/dashboard?tab=contributions" class="<%= tab === 'contributions' ? 'active' : '' %>">
+                    <i class="fa-solid fa-code-branch"></i>
+                </a>
+            </div>
+            <div class="content">
+
+                <% if (tab=="services" ) { %>
+                    <% data?.forEach(service=> { %>
+                        <div class="project">
+                            <h2>
+                                <a href="/service/update/<%= service._id %>">
+                                    <%= service.service_name %>
+                                </a>
+                            </h2>
+                            <p>
+                                <%= service.service_description %>
+                            </p>
+                        </div>
+                        <% }) %>
+                            <% } else if (tab=="projects" ) { %>
+                                <% data?.forEach(project=> { %>
+                                    <div class="project">
+                                        <h2>
+                                            <a href="/project/update/<%= project._id %>">
+                                                <%= project.project_name %>
+                                            </a>
+                                        </h2>
+                                        <p>
+                                            <%= project.project_description %>
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                                        <% } else if (tab=="blogs" ) { %>
+                                            <% data?.forEach(blog=> { %>
+                                                <div class="blog">
+                                                    <h2>
+                                                        <a href="blog/update/<%= blog._id %>">
+                                                            <%= blog.blog_title %>
+                                                        </a>
+                                                    </h2>
+                                                </div>
+                                                <% }) %>
+                                                    <% } else if (tab=="contributions" ) { %>
+                                                        <% data?.forEach(contribution=> { %>
+                                                            <div class="contribution">
+                                                                <h2>
+                                                                    <a
+                                                                        href="contribution/update/<%= contribution._id %>">
+                                                                        <%= contribution.contribution_name %>
+                                                                    </a>
+                                                                </h2>
+                                                            </div>
+                                                            <% }) %>
+                                                                <% } else { %>
+                                                                    <% data?.forEach(skill=> { %>
+                                                                        <div class="skill">
+                                                                            <h2>
+                                                                                <a href="skill/update/<%= skill._id %>">
+                                                                                    <%= skill.skill_name %>
+                                                                                </a> <span>
+                                                                                    <%= skill.skill_level %>
+                                                                                </span>
+                                                                            </h2>
+
+                                                                            <p>
+                                                                                <%= skill.skill_description %>
+                                                                            </p>
+                                                                        </div>
+                                                                        <% }) %>
+                                                                            <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="about-wrapper container" id="hero_section_description" contenteditable>
+        <%= profile.hero_section_description %>
+    </div>
+    <button id="submitBtn">Save</button>
+</div>

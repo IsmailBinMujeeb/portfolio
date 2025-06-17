@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <style>
+        .link-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .link-group input {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/project/create" method="POST" enctype="multipart/form-data">
+
+                <input type="text" id="project_name" name="project_name" placeholder="Project Name" minlength="4"
+                    required />
+
+                <fieldset>
+                    <% skills.forEach(skill=> { %>
+                        <div>
+                            <input type="radio" name="project_stack[<%= skill._id %>]" value="<%= skill._id %>" />
+                            <label for="<%= skill._id %>">
+                                <%= skill.skill_name %>
+                            </label>
+                        </div>
+                        <% }) %>
+                </fieldset>
+
+                <input type="file" id="project_image" name="project_image" placeholder="Project Image"
+                    accept="image/*" />
+
+                <input type="text" id="project_description" name="project_description"
+                    placeholder="Describe what the project does..." required>
+
+                <div id="links-wrapper">
+                    <div class="link-group">
+                        <input type="text" name="project_links[0][link_name]" placeholder="e.g., GitHub" required />
+                        <input type="url" name="project_links[0][link]" placeholder="e.g., https://github.com/..."
+                            required />
+                    </div>
+                </div>
+                <button type="button" onclick="addLink()">+ Add Another Link</button>
+
+                <button type="submit">Create Project</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        let linkIndex = 1;
+        function addLink() {
+            const wrapper = document.getElementById('links-wrapper');
+            const group = document.createElement('div');
+            group.className = 'link-group';
+            group.innerHTML = `
+        <input type="text" name="project_links[${linkIndex}][link_name]" placeholder="e.g., Demo" required />
+        <input type="url" name="project_links[${linkIndex}][link]" placeholder="e.g., https://example.com" required />
+        `;
+            wrapper.appendChild(group);
+            linkIndex++;
+        }
+    </script>
+</body>
+
+</html>

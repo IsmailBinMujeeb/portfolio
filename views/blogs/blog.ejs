@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .blogs-wrapper-all {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .blogs-wrapper-all .blog {
+            width: 30%;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .blogs-wrapper-all .blog h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .blogs-wrapper-all .blog h2 a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .blogs-wrapper-all .blog-date {
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            font-size: .8em;
+            color: gray;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="blogs-wrapper-all">
+            <% if (!blogs) { %>
+                <div class="message">No Blogs To Show! </div>
+                <% } else { %>
+                    <% blogs?.forEach(blog=> { %>
+                        <div class="blog container">
+                            <h2>
+                                <% if (isAdmin) { %>
+                                    <a href="/blog/update/<%= blog._id %>">
+                                        ✎ ㆍ
+                                    </a>
+                                    <% } %>
+                                        <a href="/blog/b/<%= blog._id %>">
+                                            <%= blog.blog_title %>
+                                        </a>
+                            </h2>
+                            <div class="blog-date">
+                                <%= blog.date %>
+                            </div>
+                            <p>
+                                <%= blog.blog_short_description %>
+                            </p>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/blog/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
+        <% } %>
+
+</body>
+
+</html>

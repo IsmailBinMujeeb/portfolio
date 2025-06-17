@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Service - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/service/update/<%= service._id %>" method="POST" enctype="multipart/form-data">
+
+                <input type="text" id="service_name" name="service_name" placeholder="Service Name" minlength="4"
+                    value="<%= service.service_name %>" required />
+
+                <input type="number" name="service_price" placeholder="Service Price"
+                    value="<%= service.service_price %>" required />
+
+                <input type="text" name="service_provider" placeholder="Service Provider"
+                    value="<%= service.service_provider %>" required />
+
+                <!-- <input type="text" id="service_description" name="service_description"
+                    placeholder="Describe what the service does..." value="<%= service.service_description %>" required> -->
+                <textarea name="service_description" id="service_description"
+                    placeholder="Describe what the service does..."><%= service.service_description %></textarea>
+
+                <input type="url" name="service_link" placeholder="Service Link" value="<%= service.service_link %>"
+                    required />
+
+                <input type="file" id="service_image" name="service_image" placeholder="Service Image"
+                    accept="image/*" />
+
+                <button type="submit">Update service</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

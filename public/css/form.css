@@ -1,0 +1,82 @@
+.form {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 20px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form form {
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.138);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form form input {
+    background-color: transparent;
+    border: 1px solid #E0234E;
+    padding: 20px;
+    width: 90%;
+    border-radius: 10px;
+    color: white;
+}
+
+.form form fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+    border: none;
+}
+
+.form form input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #E0234E;
+}
+
+.form form input:focus {
+    outline: none;
+}
+
+.form form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 20px;
+    background-color: transparent;
+    border: 1px solid #E0234E;
+    border-radius: 8px;
+    cursor: pointer;
+    color: gray;
+    width: 97%;
+}
+
+.form form select:focus {
+    outline: none;
+}
+
+.form form button {
+    background-color: transparent;
+    border: 1px solid #E0234E;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    color: white;
+    cursor: pointer;
+}
+
+.form form button:hover {
+    background-color: #E0234E;
+}

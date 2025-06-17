@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Skills - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+
+<body>
+    <main>
+        <div class="form">
+            <form action="/skill/create" method="post">
+                <input type="text" placeholder="Skill Name" name="skill_name" required>
+                <select name="skill_level">
+                    <option value="Beginner" selected>Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <input type="text" placeholder="Skill Details" name="skill_details" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>

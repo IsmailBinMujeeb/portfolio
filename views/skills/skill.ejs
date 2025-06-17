@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Ismail Bin Mujeeb</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <style>
+        .skills-wrapper {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 20px;
+        }
+
+        .skill {
+            display: inline-block;
+            width: 250px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 15px;
+            break-inside: avoid;
+        }
+
+        .skill h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill h2 a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .skill h2 a::after {
+            content: " ㆍ ";
+        }
+
+        .skill-level {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: gray;
+        }
+
+        .skill p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: whitesmoke;
+        }
+
+
+        @media (max-width: 1024px) {
+            .skills-wrapper {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-wrapper {
+                column-count: 1;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar.ejs') %>
+    </header>
+    <main>
+        <div class="skills-wrapper">
+            <% if (!skills) { %>
+                <div class="message">No Skills To Show! </div>
+                <% } else { %>
+                    <% skills?.forEach(skill=> { %>
+                        <div class="skill container">
+                            <h2>
+                                <% if (isAdmin) { %>
+                                    <a href="/skill/update/<%= skill._id %>">
+                                        ✎
+                                    </a>
+                                    <% } %>
+                                        <%= skill.skill_name %>
+                            </h2>
+                            <div class="skill-level">
+                                <%= skill.skill_level %>
+                            </div>
+                            <p>
+                                <%= skill.skill_details %>
+                            </p>
+                        </div>
+                        <% }) %>
+                            <% } %>
+        </div>
+    </main>
+    <% if (isAdmin) { %>
+        <a href="/skill/create" class="admin-link"><i class="fa-solid fa-plus"></i></a>
+        <% } %>
+
+</body>
+<script src="/js/navbar.js"></script>
+
+</html>
